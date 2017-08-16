@@ -104,9 +104,43 @@ public class Promocao implements Serializable {
 	 * Registra um novo lance
 	 */
 	public void registra(Lance lance) {
+		
+		 verificaValorValidoDoLance(lance);
+		
+		 if(verificaClienteComCincoLances(lance)){
+			 return;
+		 }
+		
+		
+		if(!lances.isEmpty() && lances.get(lances.size() -1 ).getCliente().equals(lance.getCliente())){
+			return;
+		}
+		
 		this.lances.add(lance);
 	}
-
+	
+	public void verificaValorValidoDoLance(Lance lance){
+		if(lance.getValor()<=0){
+			throw new RuntimeException("O valor do lance deve ser maior que zeo");
+		}
+	}
+	
+	public boolean  verificaClienteComCincoLances(Lance lance){
+		int total =0;
+		for(Lance l: this.lances){
+			if(l.getCliente().equals(lance.getCliente())){
+				total++;
+			}
+		}
+		
+		if(total>=5){
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
 	/**
 	 * Verifica se promoção pode ser encerrada
 	 */

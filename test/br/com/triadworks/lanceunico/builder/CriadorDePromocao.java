@@ -4,7 +4,7 @@ import br.com.triadworks.lanceunico.modelo.Cliente;
 import br.com.triadworks.lanceunico.modelo.Lance;
 import br.com.triadworks.lanceunico.modelo.Promocao;
 
-public class CriadorDePromocao {
+public class CriadorDePromocao extends Promocao{
 
 	private Promocao promocao;
 	

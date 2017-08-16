@@ -1,4 +1,4 @@
-package br.com.triadworks.lanceunico.service;
+package br.com.triadworks.lanceunico.modelo;
 
 import java.util.List;
 
