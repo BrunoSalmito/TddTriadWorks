@@ -111,4 +111,14 @@ public class PromocaoTest {
 				.cria();
 		
 	}
+	@Test(expected =RuntimeException.class)
+	public void naoDeveRegistrarLanceComValorMaiorQuePermitido(){
+		
+		Promocao promocao = new CriadorDePromocao()
+				.para("ipad")
+				.comValorMaximo(1000)
+				.comLance(rafael, 10000)
+				.cria();
+		
+	}
 }

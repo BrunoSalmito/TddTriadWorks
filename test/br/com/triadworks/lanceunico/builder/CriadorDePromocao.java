@@ -12,6 +12,7 @@ public class CriadorDePromocao extends Promocao{
 	
 	public CriadorDePromocao para(String nome){
 		promocao= new Promocao(nome);
+		promocao.setValorMaximo(Double.POSITIVE_INFINITY);
 		return this;
 	}
 	public CriadorDePromocao comLance(Cliente cliente,double valor){
@@ -29,4 +30,8 @@ public class CriadorDePromocao extends Promocao{
 	}
 	
 	
+	public  CriadorDePromocao comValorMaximo(double valorMaximo){
+		promocao.setValorMaximo(valorMaximo);
+		return this;
+	}
 }

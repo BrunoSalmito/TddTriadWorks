@@ -105,6 +105,11 @@ public class Promocao implements Serializable {
 	 */
 	public void registra(Lance lance) {
 		
+		if(lance.getValor()> valorMaximo){
+			throw new RuntimeException("Valor do lance é maior que o valor maximo da promocao");
+		}
+		
+		
 		 verificaValorValidoDoLance(lance);
 		
 		 if(verificaClienteComCincoLances(lance)){
