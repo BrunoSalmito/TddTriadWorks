@@ -3,6 +3,8 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test-aceitacao"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/br.com.triadworks.lanceunico.cadastros"/>
         <property name="context-root" value="TddTriadWorks"/>
         <property name="java-output-path" value="/TddTriadWorks/build/classes"/>
     </wb-module>
