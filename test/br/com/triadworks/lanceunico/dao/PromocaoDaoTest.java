@@ -9,6 +9,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import br.com.triadworks.lanceunico.builder.CriadorDePromocao;
+import br.com.triadworks.lanceunico.modelo.Cliente;
+import br.com.triadworks.lanceunico.modelo.Lance;
 import br.com.triadworks.lanceunico.modelo.Promocao;
 import br.com.triadworks.lanceunico.modelo.Status;
 import br.com.triadworks.lanceunico.util.JPAUtil;
@@ -68,5 +70,29 @@ public class PromocaoDaoTest {
 		
 		assertNull(promocaoDoBanco);
 	
+	}
+	
+	@Test
+	public void deveRegistrarNovoLanceNaPromocao(){
+		
+		Cliente rafael = new Cliente("Rafael");
+		
+		Promocao promocao = new CriadorDePromocao()
+				.para("xbox")
+				.cria();
+		
+		entityManager.persist(rafael);
+		entityManager.persist(promocao);
+		
+		Integer id = promocao.getId();
+		Lance lance = new Lance(rafael,100);
+		
+		PromocaoDao dao = new PromocaoDao(entityManager);
+		dao.registraLance(id, lance);
+		
+		Promocao promocaoDoBanco = dao.carrega(id);
+		assertEquals(1,promocaoDoBanco.getLances().size());
+		
+		
 	}
 }
