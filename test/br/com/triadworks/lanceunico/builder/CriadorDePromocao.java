@@ -5,6 +5,7 @@ import java.util.Date;
 import br.com.triadworks.lanceunico.modelo.Cliente;
 import br.com.triadworks.lanceunico.modelo.Lance;
 import br.com.triadworks.lanceunico.modelo.Promocao;
+import br.com.triadworks.lanceunico.modelo.Status;
 
 public class CriadorDePromocao extends Promocao{
 
@@ -32,6 +33,10 @@ public class CriadorDePromocao extends Promocao{
 	
 	public  CriadorDePromocao comValorMaximo(double valorMaximo){
 		promocao.setValorMaximo(valorMaximo);
+		return this;
+	}
+	public CriadorDePromocao comStatus(Status status) {
+		promocao.setStatus(status);
 		return this;
 	}
 }

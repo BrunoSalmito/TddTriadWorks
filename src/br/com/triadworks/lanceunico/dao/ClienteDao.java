@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import br.com.triadworks.lanceunico.modelo.Cliente;
 
@@ -18,13 +19,16 @@ public class ClienteDao {
 	
 	public Cliente buscaPorEmail(String email) {
 		
-		String jpql = "select c from Cliente c where x.email = :email";
-		
-		Cliente cliente = (Cliente) entityManager
+		String jpql = "select c from Cliente c where c.email = :email";
+		Cliente cliente;
+		try{
+			cliente = (Cliente) entityManager
 				.createQuery(jpql)
 				.setParameter("email", email)
 				.getSingleResult();
-		
+		}catch(NoResultException  ex){
+			return null;
+		}
 		return cliente;
 	}
 
